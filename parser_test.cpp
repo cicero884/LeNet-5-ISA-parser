@@ -9,12 +9,18 @@ union instruction inst;
 int main()
 {
 	while(std::cin.peek() != std::char_traits<char>::eof()){
+		// input
+		// use __builtin_bswap64(in) if it's big endian
 		uint64_t in;
 		std::cin >> std::hex >> in;
-		inst.binary = in;// __builtin_bswap64(in);
-		std::cout << std::bitset<64>(in) << std::endl;
+		inst.binary = in;
+		// std::cout << std::bitset<64>(in) << std::endl;
 		// std::cout << std::bitset<64>(inst.binary) << std::endl;
-		std::cout << inst.base.opcode << std::endl;
+		// std::cout << inst.base.opcode << std::endl;
+
+		// ex: use base or any type of instruction of opcode to get opcode
+		// inst.base.opcode
+		// inst.layer_config.opcode
 		struct layer_config l;
 		switch(inst.base.opcode){
 			case layer_config:
